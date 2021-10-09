@@ -1,0 +1,3 @@
+import /pigpio
+
+discard piGPIOInitialise()
