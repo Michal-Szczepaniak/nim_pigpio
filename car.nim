@@ -1,3 +1,4 @@
-import /pigpio
+import pigpio
 
-discard piGPIOInitialise()
+if piGPIOInitialise() > 0:
+  echo "ok"
