@@ -563,168 +563,168 @@ type
   gpioISRFunc_t = proc(gpio, level: cint, tick: cuint)
   gpioISRFuncEx_t = proc(gpio, level: cint, tick: cuint, userdata: pointer)
 
-proc piGPIOInitialise*(): cint {.importc.};
-proc piGPIOTerminate*() {.importc.};
-proc piGPIOSetMode*(gpio, mode: cuint): cint {.importc.};
-proc piGPIOGetMode*(gpio: cuint): cint {.importc.};
-proc piGPIOSetPullUpDown*(gpio, pud: cuint): cint {.importc.};
-proc piGPIORead*(gpio: cuint): cint {.importc.};
-proc piGPIOWrite*(gpio, level: cuint): cint {.importc.};
-proc piGPIOPWM*(user_gpio, dutycycle: cuint): cint {.importc.};
-proc piGPIOGetPWMdutycycle*(user_gpio: cuint): cint {.importc.};
-proc piGPIOSetPWMrange*(user_gpio, range: cuint): cint {.importc.};
-proc piGPIOGetPWMrange*(user_gpio: cuint): cint {.importc.};
-proc piGPIOGetPWMrealRange*(user_gpio: cuint): cint {.importc.};
-proc piGPIOSetPWMfrequency*(user_gpio, frequency: cuint): cint {.importc.};
-proc piGPIOGetPWMfrequency*(user_gpio: cuint): cint {.importc.};
-proc piGPIOServo*(user_gpio, pulsewidth: cuint): cint {.importc.};
-proc piGPIOGetServoPulsewidth*(user_gpio: cuint): cint {.importc.};
-proc piGPIOSetAlertFunc*(user_gpio: cuint, f: gpioAlertFunc_t): cint {.importc.};
-proc piGPIOSetAlertFuncEx*(user_gpio: cuint, f: gpioAlertFuncEx_t, userdata: pointer): cint {.importc.};
-proc piGPIOSetISRFunc*(gpio, edge: cuint, timeout: cint, f: gpioISRFunc_t): cint {.importc.};
-proc piGPIOSetISRFuncEx*(gpio, edge: cuint, timeout: cint, f: gpioISRFuncEx_t, userdata: pointer): cint {.importc.};
-proc piGPIONotifyOpen*(): cint {.importc.};
-proc piGPIONotifyOpenWithSize*(bufSize: cint): cint {.importc.};
-proc piGPIONotifyBegin*(handle, bits: cuint): cint {.importc.};
-proc piGPIONotifyPause*(handle: cuint): cint {.importc.};
-proc piGPIONotifyClose*(handle: cuint): cint {.importc.};
-proc piGPIOWaveClear*(): cint {.importc.};
-proc piGPIOWaveAddNew*(): cint {.importc.};
-#[proc piGPIOWaveAddGeneric*(cuint numPulses, gpioPulse_t *pulses): cint {.importc.};
-proc piGPIOWaveAddSerial*(cuint user_gpio, cuint baud, cuint data_bits, cuint stop_bits, cuint offset, cuint numBytes, char *str): cint {.importc.};
-proc piGPIOWaveCreate*(): cint {.importc.};
-proc piGPIOWaveCreatePad*(int pctCB, int pctBOOL, int pctTOOL): cint {.importc.};
-proc piGPIOWaveDelete*(cuint wave_id): cint {.importc.};
-proc piGPIOWaveTxSend*(cuint wave_id, cuint wave_mode): cint {.importc.};
-proc piGPIOWaveChain*(char *buf, cuint bufSize): cint {.importc.};
-proc piGPIOWaveTxAt*(): cint {.importc.};
-proc piGPIOWaveTxBusy*(): cint {.importc.};
-proc piGPIOWaveTxStop*(): cint {.importc.};
-proc piGPIOWaveGetMicros*(): cint {.importc.};
-proc piGPIOWaveGetHighMicros*(): cint {.importc.};
-proc piGPIOWaveGetMaxMicros*(): cint {.importc.};
-proc piGPIOWaveGetPulses*(): cint {.importc.};
-proc piGPIOWaveGetHighPulses*(): cint {.importc.};
-proc piGPIOWaveGetMaxPulses*(): cint {.importc.};
-proc piGPIOWaveGetCbs*(): cint {.importc.};
-proc piGPIOWaveGetHighCbs*(): cint {.importc.};
-proc piGPIOWaveGetMaxCbs*(): cint {.importc.};
-proc piGPIOSerialReadOpen*(cuint user_gpio, cuint baud, cuint data_bits): cint {.importc.};
-proc piGPIOSerialReadInvert*(cuint user_gpio, cuint invert): cint {.importc.};
-proc piGPIOSerialRead*(cuint user_gpio, void *buf, size_t bufSize): cint {.importc.};
-proc piGPIOSerialReadClose*(cuint user_gpio): cint {.importc.};
-proc pii2cOpen*(cuint i2cBus, cuint i2cAddr, cuint i2cFlags): cint {.importc.};
-proc pii2cClose*(cuint handle): cint {.importc.};
-proc pii2cWriteQuick*(cuint handle, cuint bit): cint {.importc.};
-proc pii2cWriteByte*(cuint handle, cuint bVal): cint {.importc.};
-proc pii2cReadByte*(cuint handle): cint {.importc.};
-proc pii2cWriteByteData*(cuint handle, cuint i2cReg, cuint bVal): cint {.importc.};
-proc pii2cWriteWordData*(cuint handle, cuint i2cReg, cuint wVal): cint {.importc.};
-proc pii2cReadByteData*(cuint handle, cuint i2cReg): cint {.importc.};
-proc pii2cReadWordData*(cuint handle, cuint i2cReg): cint {.importc.};
-proc pii2cProcessCall*(cuint handle, cuint i2cReg, cuint wVal): cint {.importc.};
-proc pii2cWriteBlockData*(cuint handle, cuint i2cReg, char *buf, cuint count): cint {.importc.};
-proc pii2cReadBlockData*(cuint handle, cuint i2cReg, char *buf): cint {.importc.};
-proc pii2cBlockProcessCall*(cuint handle, cuint i2cReg, char *buf, cuint count): cint {.importc.};
-proc pii2cReadI2CBlockData*(cuint handle, cuint i2cReg, char *buf, cuint count): cint {.importc.};
-proc pii2cWriteI2CBlockData*(cuint handle, cuint i2cReg, char *buf, cuint count): cint {.importc.};
-proc pii2cReadDevice*(cuint handle, char *buf, cuint count): cint {.importc.};
-proc pii2cWriteDevice*(cuint handle, char *buf, cuint count): cint {.importc.};
-proc pii2cSwitchCombined*(int setting) {.importc.};
-proc pii2cSegments*(cuint handle, pi_i2c_msg_t *segs, cuint numSegs): cint {.importc.};
-proc pii2cZip*(cuint handle, char *inBuf, cuint inLen, char *outBuf, cuint outLen): cint {.importc.};
-proc pibbI2COpen*(cuint SDA, cuint SCL, cuint baud): cint {.importc.};
-proc pibbI2CClose*(cuint SDA): cint {.importc.};
-proc pibbI2CZip*(cuint SDA, char *inBuf, cuint inLen, char *outBuf, cuint outLen): cint {.importc.};
-proc pibscXfer*(bsc_xfer_t *bsc_xfer): cint {.importc.};
-cuint baud, cuint spiFlags);
-proc pibbSPIClose*(cuint CS): cint {.importc.};
-proc pibbSPIXfer*(cuint CS, char *inBuf, char *outBuf, cuint count): cint {.importc.};
-proc piSpiOpen*(cuint spiChan, cuint baud, cuint spiFlags): cint {.importc.};
-proc piSpiClose*(cuint handle): cint {.importc.};
-proc piSpiRead*(cuint handle, char *buf, cuint count): cint {.importc.};
-proc piSpiWrite*(cuint handle, char *buf, cuint count): cint {.importc.};
-proc piSpiXfer*(cuint handle, char *txBuf, char *rxBuf, cuint count): cint {.importc.};
-proc piSerOpen*(char *sertty, cuint baud, cuint serFlags): cint {.importc.};
-proc piSerClose*(cuint handle): cint {.importc.};
-proc piSerWriteByte*(cuint handle, cuint bVal): cint {.importc.};
-proc piSerReadByte*(cuint handle): cint {.importc.};
-proc piSerWrite*(cuint handle, char *buf, cuint count): cint {.importc.};
-proc piSerRead*(cuint handle, char *buf, cuint count): cint {.importc.};
-proc piSerDataAvailable*(cuint handle): cint {.importc.};
-proc piGPIOTrigger*(cuint user_gpio, cuint pulseLen, cuint level): cint {.importc.};
-proc piGPIOSetWatchdog*(cuint user_gpio, cuint timeout): cint {.importc.};
-proc piGPIONoiseFilter*(cuint user_gpio, cuint steady, cuint active): cint {.importc.};
-proc piGPIOGlitchFilter*(cuint user_gpio, cuint steady): cint {.importc.};
-proc piGPIOSetGetSamplesFunc*(gpioGetSamplesFunc_t f, uint32_t bits): cint {.importc.};
-proc piGPIOSetGetSamplesFuncEx*(gpioGetSamplesFuncEx_t f, uint32_t bits, void *userdata): cint {.importc.};
-proc piGPIOSetTimerFunc*(cuint timer, cuint millis, gpioTimerFunc_t f): cint {.importc.};
-proc piGPIOSetTimerFuncEx*(cuint timer, cuint millis, gpioTimerFuncEx_t f, void *userdata): cint {.importc.};
-pthread_t *piGPIOStartThread*(gpioThreadFunc_t f, void *userdata);
-proc piGPIOStopThread*(pthread_t *pth) {.importc.};
-proc piGPIOStoreScript*(char *script): cint {.importc.};
-proc piGPIORunScript*(cuint script_id, cuint numPar, uint32_t *param): cint {.importc.};
-proc piGPIOUpdateScript*(cuint script_id, cuint numPar, uint32_t *param): cint {.importc.};
-proc piGPIOScriptStatus*(cuint script_id, uint32_t *param): cint {.importc.};
-proc piGPIOStopScript*(cuint script_id): cint {.importc.};
-proc piGPIODeleteScript*(cuint script_id): cint {.importc.};
-proc piGPIOSetSignalFunc*(cuint signum, gpioSignalFunc_t f): cint {.importc.};
-proc piGPIOSetSignalFuncEx*(cuint signum, gpioSignalFuncEx_t f, void *userdata): cint {.importc.};
-uint32_t piGPIORead_Bits_0_31*();
-uint32_t piGPIORead_Bits_32_53*();
-proc piGPIOWrite_Bits_0_31_Clear*(uint32_t bits): cint {.importc.};
-proc piGPIOWrite_Bits_32_53_Clear*(uint32_t bits): cint {.importc.};
-proc piGPIOWrite_Bits_0_31_Set*(uint32_t bits): cint {.importc.};
-proc piGPIOWrite_Bits_32_53_Set*(uint32_t bits): cint {.importc.};
-proc piGPIOHardwareClock*(cuint gpio, cuint clkfreq): cint {.importc.};
-proc piGPIOHardwarePWM*(cuint gpio, cuint PWMfreq, cuint PWMduty): cint {.importc.};
-proc piGPIOTime*(cuint timetype, int *seconds, int *micros): cint {.importc.};
-proc piGPIOSleep*(cuint timetype, int seconds, int micros): cint {.importc.};]#
-proc piGPIODelay*(micros: cuint): cuint {.importc.};
-#[uint32_t piGPIOTick*();
-cuint piGPIOHardwareRevision*();
-cuint piGPIOVersion*();
-proc piGPIOGetPad*(cuint pad): cint {.importc.};
-proc piGPIOSetPad*(cuint pad, cuint padStrength): cint {.importc.};
-proc piEventMonitor*(cuint handle, uint32_t bits): cint {.importc.};
-proc piEventSetFunc*(cuint event, eventFunc_t f): cint {.importc.};
-proc piEventSetFuncEx*(cuint event, eventFuncEx_t f, void *userdata): cint {.importc.};
-proc piEventTrigger*(cuint event): cint {.importc.};
-proc piShell*(char *scriptName, char *scriptString): cint {.importc.};
-proc piFileOpen*(char *file, cuint mode): cint {.importc.};
-proc piFileClose*(cuint handle): cint {.importc.};
-proc piFileWrite*(cuint handle, char *buf, cuint count): cint {.importc.};
-proc piFileRead*(cuint handle, char *buf, cuint count): cint {.importc.};
-proc piFileSeek*(cuint handle, int32_t seekOffset, int seekFrom): cint {.importc.};
-proc piFileList*(char *fpat, char *buf, cuint count): cint {.importc.};
-proc piGPIOCfgBufferSize*(cuint cfgMillis): cint {.importc.};
-proc piGPIOCfgClock*(cuint cfgMicros, cuint cfgPeripheral, cuint cfgSource): cint {.importc.};
-proc piGPIOCfgDMAchannel*(cuint DMAchannel): cint {.importc.};
-proc piGPIOCfgDMAchannels*(cuint primaryChannel, cuint secondaryChannel): cint {.importc.};
-proc piGPIOCfgPermissions*(uint64_t updateMask): cint {.importc.};
-proc piGPIOCfgSocketPort*(cuint port): cint {.importc.};
-proc piGPIOCfgInterfaces*(cuint ifFlags): cint {.importc.};]#
-proc piGPIOCfgMemAlloc*(memAllocMode: cuint): cint {.importc.};
-#[proc piGPIOCfgNetAddr*(int numSockAddr, uint32_t *sockAddr): cint {.importc.};]#
-proc piGPIOCfgGetInternals*(): cuint {.importc.};
-#[proc piGPIOCfgSetInternals*(uint32_t cfgVal): cint {.importc.};
-proc piGPIOCustom1*(cuint arg1, cuint arg2, char *argx, cuint argc): cint {.importc.};
-proc piGPIOCustom2*(cuint arg1, char *argx, cuint argc, char *retBuf, cuint retMax): cint {.importc.};
-proc piRawWaveAddSPI*(rawSPI_t *spi, cuint offset, cuint spiSS, char *buf, cuint spiTxBits, cuint spiBitFirst, cuint spiBitLast, cuint spiBits): cint {.importc.};
-proc piRawWaveAddGeneric*(cuint numPulses, rawWave_t *pulses): cint {.importc.};
-cuint piRawWaveCB*();
-rawCbs_t *piRawWaveCBAdr*(int cbNum);
-uint32_t piRawWaveGetOOL*(int pos);
-proc piRawWaveSetOOL*(int pos, uint32_t lVal) {.importc.};
-uint32_t piRawWaveGetOut*(int pos);
-proc piRawWaveSetOut*(int pos, uint32_t lVal) {.importc.};
-uint32_t piRawWaveGetIn*(int pos);
-proc piRawWaveSetIn*(int pos, uint32_t lVal) {.importc.};
-rawWaveInfo_t piRawWaveInfo*(int wave_id);
-proc piGetBitInBytes*(int bitPos, char *buf, int numBits): cint {.importc.};
-proc piPutBitInBytes*(int bitPos, char *buf, int bit) {.importc.};
-double piTime_time*();
-proc piTime_sleep*(double seconds) {.importc.};
-proc piRawDumpWave*() {.importc.};
-proc piRawDumpScript*(cuint script_id) {.importc.};
+proc piGPIOInitialise*(): cint {.importc.}
+proc piGPIOTerminate*() {.importc.}
+proc piGPIOSetMode*(gpio, mode: cuint): cint {.importc.}
+proc piGPIOGetMode*(gpio: cuint): cint {.importc.}
+proc piGPIOSetPullUpDown*(gpio, pud: cuint): cint {.importc.}
+proc piGPIORead*(gpio: cuint): cint {.importc.}
+proc piGPIOWrite*(gpio, level: cuint): cint {.importc.}
+proc piGPIOPWM*(user_gpio, dutycycle: cuint): cint {.importc.}
+proc piGPIOGetPWMdutycycle*(user_gpio: cuint): cint {.importc.}
+proc piGPIOSetPWMrange*(user_gpio, range: cuint): cint {.importc.}
+proc piGPIOGetPWMrange*(user_gpio: cuint): cint {.importc.}
+proc piGPIOGetPWMrealRange*(user_gpio: cuint): cint {.importc.}
+proc piGPIOSetPWMfrequency*(user_gpio, frequency: cuint): cint {.importc.}
+proc piGPIOGetPWMfrequency*(user_gpio: cuint): cint {.importc.}
+proc piGPIOServo*(user_gpio, pulsewidth: cuint): cint {.importc.}
+proc piGPIOGetServoPulsewidth*(user_gpio: cuint): cint {.importc.}
+proc piGPIOSetAlertFunc*(user_gpio: cuint, f: gpioAlertFunc_t): cint {.importc.}
+proc piGPIOSetAlertFuncEx*(user_gpio: cuint, f: gpioAlertFuncEx_t, userdata: pointer): cint {.importc.}
+proc piGPIOSetISRFunc*(gpio, edge: cuint, timeout: cint, f: gpioISRFunc_t): cint {.importc.}
+proc piGPIOSetISRFuncEx*(gpio, edge: cuint, timeout: cint, f: gpioISRFuncEx_t, userdata: pointer): cint {.importc.}
+proc piGPIONotifyOpen*(): cint {.importc.}
+proc piGPIONotifyOpenWithSize*(bufSize: cint): cint {.importc.}
+proc piGPIONotifyBegin*(handle, bits: cuint): cint {.importc.}
+proc piGPIONotifyPause*(handle: cuint): cint {.importc.}
+proc piGPIONotifyClose*(handle: cuint): cint {.importc.}
+proc piGPIOWaveClear*(): cint {.importc.}
+proc piGPIOWaveAddNew*(): cint {.importc.}
+#[proc piGPIOWaveAddGeneric*(cuint numPulses, gpioPulse_t *pulses): cint {.importc.}
+proc piGPIOWaveAddSerial*(cuint user_gpio, cuint baud, cuint data_bits, cuint stop_bits, cuint offset, cuint numBytes, char *str): cint {.importc.}
+proc piGPIOWaveCreate*(): cint {.importc.}
+proc piGPIOWaveCreatePad*(int pctCB, int pctBOOL, int pctTOOL): cint {.importc.}
+proc piGPIOWaveDelete*(cuint wave_id): cint {.importc.}
+proc piGPIOWaveTxSend*(cuint wave_id, cuint wave_mode): cint {.importc.}
+proc piGPIOWaveChain*(char *buf, cuint bufSize): cint {.importc.}
+proc piGPIOWaveTxAt*(): cint {.importc.}
+proc piGPIOWaveTxBusy*(): cint {.importc.}
+proc piGPIOWaveTxStop*(): cint {.importc.}
+proc piGPIOWaveGetMicros*(): cint {.importc.}
+proc piGPIOWaveGetHighMicros*(): cint {.importc.}
+proc piGPIOWaveGetMaxMicros*(): cint {.importc.}
+proc piGPIOWaveGetPulses*(): cint {.importc.}
+proc piGPIOWaveGetHighPulses*(): cint {.importc.}
+proc piGPIOWaveGetMaxPulses*(): cint {.importc.}
+proc piGPIOWaveGetCbs*(): cint {.importc.}
+proc piGPIOWaveGetHighCbs*(): cint {.importc.}
+proc piGPIOWaveGetMaxCbs*(): cint {.importc.}
+proc piGPIOSerialReadOpen*(cuint user_gpio, cuint baud, cuint data_bits): cint {.importc.}
+proc piGPIOSerialReadInvert*(cuint user_gpio, cuint invert): cint {.importc.}
+proc piGPIOSerialRead*(cuint user_gpio, void *buf, size_t bufSize): cint {.importc.}
+proc piGPIOSerialReadClose*(cuint user_gpio): cint {.importc.}
+proc pii2cOpen*(cuint i2cBus, cuint i2cAddr, cuint i2cFlags): cint {.importc.}
+proc pii2cClose*(cuint handle): cint {.importc.}
+proc pii2cWriteQuick*(cuint handle, cuint bit): cint {.importc.}
+proc pii2cWriteByte*(cuint handle, cuint bVal): cint {.importc.}
+proc pii2cReadByte*(cuint handle): cint {.importc.}
+proc pii2cWriteByteData*(cuint handle, cuint i2cReg, cuint bVal): cint {.importc.}
+proc pii2cWriteWordData*(cuint handle, cuint i2cReg, cuint wVal): cint {.importc.}
+proc pii2cReadByteData*(cuint handle, cuint i2cReg): cint {.importc.}
+proc pii2cReadWordData*(cuint handle, cuint i2cReg): cint {.importc.}
+proc pii2cProcessCall*(cuint handle, cuint i2cReg, cuint wVal): cint {.importc.}
+proc pii2cWriteBlockData*(cuint handle, cuint i2cReg, char *buf, cuint count): cint {.importc.}
+proc pii2cReadBlockData*(cuint handle, cuint i2cReg, char *buf): cint {.importc.}
+proc pii2cBlockProcessCall*(cuint handle, cuint i2cReg, char *buf, cuint count): cint {.importc.}
+proc pii2cReadI2CBlockData*(cuint handle, cuint i2cReg, char *buf, cuint count): cint {.importc.}
+proc pii2cWriteI2CBlockData*(cuint handle, cuint i2cReg, char *buf, cuint count): cint {.importc.}
+proc pii2cReadDevice*(cuint handle, char *buf, cuint count): cint {.importc.}
+proc pii2cWriteDevice*(cuint handle, char *buf, cuint count): cint {.importc.}
+proc pii2cSwitchCombined*(int setting) {.importc.}
+proc pii2cSegments*(cuint handle, pi_i2c_msg_t *segs, cuint numSegs): cint {.importc.}
+proc pii2cZip*(cuint handle, char *inBuf, cuint inLen, char *outBuf, cuint outLen): cint {.importc.}
+proc pibbI2COpen*(cuint SDA, cuint SCL, cuint baud): cint {.importc.}
+proc pibbI2CClose*(cuint SDA): cint {.importc.}
+proc pibbI2CZip*(cuint SDA, char *inBuf, cuint inLen, char *outBuf, cuint outLen): cint {.importc.}
+proc pibscXfer*(bsc_xfer_t *bsc_xfer): cint {.importc.}
+cuint baud, cuint spiFlags)
+proc pibbSPIClose*(cuint CS): cint {.importc.}
+proc pibbSPIXfer*(cuint CS, char *inBuf, char *outBuf, cuint count): cint {.importc.}
+proc piSpiOpen*(cuint spiChan, cuint baud, cuint spiFlags): cint {.importc.}
+proc piSpiClose*(cuint handle): cint {.importc.}
+proc piSpiRead*(cuint handle, char *buf, cuint count): cint {.importc.}
+proc piSpiWrite*(cuint handle, char *buf, cuint count): cint {.importc.}
+proc piSpiXfer*(cuint handle, char *txBuf, char *rxBuf, cuint count): cint {.importc.}
+proc piSerOpen*(char *sertty, cuint baud, cuint serFlags): cint {.importc.}
+proc piSerClose*(cuint handle): cint {.importc.}
+proc piSerWriteByte*(cuint handle, cuint bVal): cint {.importc.}
+proc piSerReadByte*(cuint handle): cint {.importc.}
+proc piSerWrite*(cuint handle, char *buf, cuint count): cint {.importc.}
+proc piSerRead*(cuint handle, char *buf, cuint count): cint {.importc.}
+proc piSerDataAvailable*(cuint handle): cint {.importc.}
+proc piGPIOTrigger*(cuint user_gpio, cuint pulseLen, cuint level): cint {.importc.}
+proc piGPIOSetWatchdog*(cuint user_gpio, cuint timeout): cint {.importc.}
+proc piGPIONoiseFilter*(cuint user_gpio, cuint steady, cuint active): cint {.importc.}
+proc piGPIOGlitchFilter*(cuint user_gpio, cuint steady): cint {.importc.}
+proc piGPIOSetGetSamplesFunc*(gpioGetSamplesFunc_t f, uint32_t bits): cint {.importc.}
+proc piGPIOSetGetSamplesFuncEx*(gpioGetSamplesFuncEx_t f, uint32_t bits, void *userdata): cint {.importc.}
+proc piGPIOSetTimerFunc*(cuint timer, cuint millis, gpioTimerFunc_t f): cint {.importc.}
+proc piGPIOSetTimerFuncEx*(cuint timer, cuint millis, gpioTimerFuncEx_t f, void *userdata): cint {.importc.}
+pthread_t *piGPIOStartThread*(gpioThreadFunc_t f, void *userdata)
+proc piGPIOStopThread*(pthread_t *pth) {.importc.}
+proc piGPIOStoreScript*(char *script): cint {.importc.}
+proc piGPIORunScript*(cuint script_id, cuint numPar, uint32_t *param): cint {.importc.}
+proc piGPIOUpdateScript*(cuint script_id, cuint numPar, uint32_t *param): cint {.importc.}
+proc piGPIOScriptStatus*(cuint script_id, uint32_t *param): cint {.importc.}
+proc piGPIOStopScript*(cuint script_id): cint {.importc.}
+proc piGPIODeleteScript*(cuint script_id): cint {.importc.}
+proc piGPIOSetSignalFunc*(cuint signum, gpioSignalFunc_t f): cint {.importc.}
+proc piGPIOSetSignalFuncEx*(cuint signum, gpioSignalFuncEx_t f, void *userdata): cint {.importc.}
+uint32_t piGPIORead_Bits_0_31*()
+uint32_t piGPIORead_Bits_32_53*()
+proc piGPIOWrite_Bits_0_31_Clear*(uint32_t bits): cint {.importc.}
+proc piGPIOWrite_Bits_32_53_Clear*(uint32_t bits): cint {.importc.}
+proc piGPIOWrite_Bits_0_31_Set*(uint32_t bits): cint {.importc.}
+proc piGPIOWrite_Bits_32_53_Set*(uint32_t bits): cint {.importc.}
+proc piGPIOHardwareClock*(cuint gpio, cuint clkfreq): cint {.importc.}
+proc piGPIOHardwarePWM*(cuint gpio, cuint PWMfreq, cuint PWMduty): cint {.importc.}
+proc piGPIOTime*(cuint timetype, int *seconds, int *micros): cint {.importc.}
+proc piGPIOSleep*(cuint timetype, int seconds, int micros): cint {.importc.}]#
+proc piGPIODelay*(micros: cuint): cuint {.importc.}
+#[uint32_t piGPIOTick*()
+cuint piGPIOHardwareRevision*()
+cuint piGPIOVersion*()
+proc piGPIOGetPad*(cuint pad): cint {.importc.}
+proc piGPIOSetPad*(cuint pad, cuint padStrength): cint {.importc.}
+proc piEventMonitor*(cuint handle, uint32_t bits): cint {.importc.}
+proc piEventSetFunc*(cuint event, eventFunc_t f): cint {.importc.}
+proc piEventSetFuncEx*(cuint event, eventFuncEx_t f, void *userdata): cint {.importc.}
+proc piEventTrigger*(cuint event): cint {.importc.}
+proc piShell*(char *scriptName, char *scriptString): cint {.importc.}
+proc piFileOpen*(char *file, cuint mode): cint {.importc.}
+proc piFileClose*(cuint handle): cint {.importc.}
+proc piFileWrite*(cuint handle, char *buf, cuint count): cint {.importc.}
+proc piFileRead*(cuint handle, char *buf, cuint count): cint {.importc.}
+proc piFileSeek*(cuint handle, int32_t seekOffset, int seekFrom): cint {.importc.}
+proc piFileList*(char *fpat, char *buf, cuint count): cint {.importc.}
+proc piGPIOCfgBufferSize*(cuint cfgMillis): cint {.importc.}
+proc piGPIOCfgClock*(cuint cfgMicros, cuint cfgPeripheral, cuint cfgSource): cint {.importc.}
+proc piGPIOCfgDMAchannel*(cuint DMAchannel): cint {.importc.}
+proc piGPIOCfgDMAchannels*(cuint primaryChannel, cuint secondaryChannel): cint {.importc.}
+proc piGPIOCfgPermissions*(uint64_t updateMask): cint {.importc.}
+proc piGPIOCfgSocketPort*(cuint port): cint {.importc.}
+proc piGPIOCfgInterfaces*(cuint ifFlags): cint {.importc.}]#
+proc piGPIOCfgMemAlloc*(memAllocMode: cuint): cint {.importc.}
+#[proc piGPIOCfgNetAddr*(int numSockAddr, uint32_t *sockAddr): cint {.importc.}]#
+proc piGPIOCfgGetInternals*(): cuint {.importc.}
+#[proc piGPIOCfgSetInternals*(uint32_t cfgVal): cint {.importc.}
+proc piGPIOCustom1*(cuint arg1, cuint arg2, char *argx, cuint argc): cint {.importc.}
+proc piGPIOCustom2*(cuint arg1, char *argx, cuint argc, char *retBuf, cuint retMax): cint {.importc.}
+proc piRawWaveAddSPI*(rawSPI_t *spi, cuint offset, cuint spiSS, char *buf, cuint spiTxBits, cuint spiBitFirst, cuint spiBitLast, cuint spiBits): cint {.importc.}
+proc piRawWaveAddGeneric*(cuint numPulses, rawWave_t *pulses): cint {.importc.}
+cuint piRawWaveCB*()
+rawCbs_t *piRawWaveCBAdr*(int cbNum)
+uint32_t piRawWaveGetOOL*(int pos)
+proc piRawWaveSetOOL*(int pos, uint32_t lVal) {.importc.}
+uint32_t piRawWaveGetOut*(int pos)
+proc piRawWaveSetOut*(int pos, uint32_t lVal) {.importc.}
+uint32_t piRawWaveGetIn*(int pos)
+proc piRawWaveSetIn*(int pos, uint32_t lVal) {.importc.}
+rawWaveInfo_t piRawWaveInfo*(int wave_id)
+proc piGetBitInBytes*(int bitPos, char *buf, int numBits): cint {.importc.}
+proc piPutBitInBytes*(int bitPos, char *buf, int bit) {.importc.}
+double piTime_time*()
+proc piTime_sleep*(double seconds) {.importc.}
+proc piRawDumpWave*() {.importc.}
+proc piRawDumpScript*(cuint script_id) {.importc.}
 ]#
